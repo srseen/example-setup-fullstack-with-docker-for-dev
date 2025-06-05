@@ -11,7 +11,7 @@
 git clone https://github.com/srseen/example-setup-fullstack-with-docker-for-dev.git
 ```
 ## lib install
-* clinet
+* client
 ```
 cd client
 npm install
