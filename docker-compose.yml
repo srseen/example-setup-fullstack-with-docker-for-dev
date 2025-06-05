@@ -8,6 +8,11 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=mydatabase
+    restart: unless-stopped
 
   server:
     build: ./server
@@ -19,6 +24,7 @@ services:
       - "5000:5000"
     depends_on:
       - mongo
+    restart: unless-stopped
 
   client:
     build: ./client
@@ -27,6 +33,7 @@ services:
       - "3000:80"
     depends_on:
       - server
+    restart: unless-stopped
 
 volumes:
   mongo-data:
